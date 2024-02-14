@@ -18,7 +18,7 @@ const storage = multer.diskStorage({
 });
 const upload = multer({ storage: storage });
 
-router.post("/add-logo", upload.single("logo"), addLogo);
+router.post("/add-logo", verifyAdmin, upload.single("logo"), addLogo);
 router.patch(
   "/update-logo/:id",
   verifyAdmin,
